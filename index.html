@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/all.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/media.css" />
+    <title></title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row" id="test">
+        <div class="col-md-8 mx-auto">
+          <div class="form-group my-3">
+            <label for="ProductName" class="mb-1">Product Name:</label>
+            <input type="text" id="ProductName" placeholder="Enter product name" class="form-control mb-3" />
+          </div>
+          <div class="formData my-3">
+            <label for="ProductPrice" class="mb-1">Product Price:</label>
+            <input id="ProductPrice" type="number" placeholder="Enter product price" class="form-control mb-3" />
+          </div>
+          <div class="formData my-3">
+            <label for="ProductCategory" class="mb-1">Product Category:</label>
+            <input id="ProductCategory" type="text" placeholder="Enter product category" class="form-control mb-3" />
+          </div>
+          <div class="formData my-3">
+            <label for="ProductDesc" class="mb-1">Product Desc:</label>
+            <textarea id="ProductDesc" type="text" class="form-control mb-3 textAreaHolder" rows="6"></textarea>
+          </div>
+          <button
+            class="d-block btn btn-info fw-bold ms-auto mb-5"
+            onclick="addProduct()"
+            id="addBtn"
+          >
+            Add Product
+          </button>
+          <div class="input-group w-75 mb-4 mx-auto">
+              <span class="input-group-text">
+                <i class="fa fa-search"></i>
+              </span>
+             <input type="text" placeholder="Search input name" onchange="handleChange()" oninput="searchProducts(this.value)" class="form-control"/>
+           </div>
+          <table class="table text-center text-white">
+            <thead>
+              <tr class="d-table-row fw-bold">
+                <td class="d-table-cell">Index</td>
+                <td class="d-table-cell">Name</td>
+                <td class="d-table-cell">Price</td>
+                <td class="d-table-cell">Category</td>
+                <td class="d-table-cell">Description</td>
+                <td class="d-table-cell">Update</td>
+                <td class="d-table-cell">Delete</td>
+              </tr>
+            </thead>
+            <tbody id="tableBody">
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>
