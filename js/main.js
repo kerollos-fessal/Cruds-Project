@@ -7,6 +7,7 @@ var ProductDesc = document.getElementById("ProductDesc");
 var tableBodyData = document.getElementById("tableBody");
 var containerOfData;
 var modifyBtn = document.getElementById("addBtn");
+var updatedIndex;
 
 //checking for data in local storage to display
 if(localStorage.getItem("productsInfo")){
@@ -16,18 +17,45 @@ if(localStorage.getItem("productsInfo")){
 
 //function to add products in the products array and them to local storage
 function addProduct(){
-    var product = {
-        name: productName.value,
-        price: ProductPrice.value,
-        category: ProductCategory.value,
-        desc: ProductDesc.value
-    };
-    modifyBtn.innerText = "Add Product";
-    modifyBtn.classList.replace('btn-warning', 'btn-info');
-    if(checkRedundancy(product)){
+  if(modifyBtn.innerText=="Update"){
+    var updatedProduct = {
+      name: productName.value,
+      price: ProductPrice.value,
+      category: ProductCategory.value,
+      desc: ProductDesc.value
+    }
+   if (productsHolder[updatedIndex].name === updatedProduct.name &&
+      productsHolder[updatedIndex].price === updatedProduct.price &&
+      productsHolder[updatedIndex].category === updatedProduct.category &&
+      productsHolder[updatedIndex].desc === updatedProduct.desc
+      ){
+    alert("You didn't make any changes");
+    return;
+   }
+    if(checkRedundancy(updatedProduct)){
+      alert("this product is duplicated");
       return;
     }
-    productsHolder.push(product);
+ productsHolder[updatedIndex].name= productName.value;
+ productsHolder[updatedIndex].price= ProductPrice.value; 
+ productsHolder[updatedIndex].category= ProductCategory.value;
+ productsHolder[updatedIndex].desc= ProductDesc.value;
+ modifyBtn.innerText = "Add Product";
+ modifyBtn.classList.replace('btn-warning', 'btn-info');
+  }else{
+    var product = {
+      name: productName.value,
+      price: ProductPrice.value,
+      category: ProductCategory.value,
+      desc: ProductDesc.value
+  };
+  if(checkRedundancy(product)){
+    alert("this product is duplicated");
+    return;
+  }
+  productsHolder.push(product);
+  }
+  
   localStorage.setItem("productsInfo", JSON.stringify(productsHolder));
   displayProducts(productsHolder);
   clearForm();
@@ -97,7 +125,7 @@ function updateProduct(index){
   ProductDesc.value = productsHolder[index].desc;
   modifyBtn.innerText = "Update";
   modifyBtn.classList.replace('btn-info', 'btn-warning');
-  deleteProduct(index);
+  updatedIndex = index;
 };
 
 //function to check repeated products
