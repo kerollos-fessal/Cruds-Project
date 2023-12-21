@@ -14,21 +14,25 @@
     <div class="container">
       <div class="row" id="test">
         <div class="col-md-8 mx-auto">
-          <div class="form-group my-3">
+          <div class="form-group mt-3">
             <label for="ProductName" class="mb-1">Product Name:</label>
-            <input type="text" id="ProductName" placeholder="Enter product name" class="form-control mb-3" />
+            <input type="text" id="ProductName" oninput="productNameValidation()" placeholder="Enter product name" class="form-control" />
+            <div class="text-danger mb-0 mt-1 alert alert-danger d-none" id="nameErr">Product name must start with capital letter then from 3 to 8 letters.</div>
           </div>
-          <div class="formData my-3">
-            <label for="ProductPrice" class="mb-1">Product Price:</label>
-            <input id="ProductPrice" type="number" placeholder="Enter product price" class="form-control mb-3" />
+          <div class="formData">
+            <label for="ProductPrice" class="mb-1 mt-3">Product Price:</label>
+            <input id="ProductPrice" type="number" oninput="productPriceValidation()" placeholder="Enter product price" class="form-control" />
+            <div class="text-danger mb-0 mt-1 alert alert-danger d-none" id="priceErr">Product price must be between 10000 and 50000</div>
           </div>
-          <div class="formData my-3">
-            <label for="ProductCategory" class="mb-1">Product Category:</label>
-            <input id="ProductCategory" type="text" placeholder="Enter product category" class="form-control mb-3" />
+          <div class="formData mt-3">
+            <label for="ProductCategory" class="mb-1 mt-3">Product Category:</label>
+            <input id="ProductCategory" type="text" oninput="productCategoryValidation()" placeholder="Enter product category" class="form-control mb-3" />
+            <div class="text-danger mb-0 mt-1 alert alert-danger d-none" id="catErr">Product categories are: mobile, tv, laptop, phone only.</div>
           </div>
-          <div class="formData my-3">
-            <label for="ProductDesc" class="mb-1">Product Desc:</label>
-            <textarea id="ProductDesc" type="text" class="form-control mb-3 textAreaHolder" rows="6"></textarea>
+          <div class="formData mt-3">
+            <label for="ProductDesc" class="mb-1 mt-3">Product Desc:</label>
+            <textarea id="ProductDesc" type="text" oninput="productDescValidation()" class="form-control mb-3 textAreaHolder" rows="6"></textarea>
+            <div class="text-danger mb-0 mt-1 alert alert-danger d-none" id="descErr">Product description must be between 2 and 100 character.</div>
           </div>
           <button
             class="d-block btn btn-info fw-bold ms-auto mb-5"
